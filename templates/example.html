@@ -1,0 +1,18 @@
+<html>
+  <head>
+    {% if place %}
+    <title>Place Template</title>
+    {% else %}
+    <title>Exam Template</title>
+    {% endif %}
+  </head>
+  <body>
+    {% if place %}
+    <h1>This is the {{place}} template.</h1>
+    {% for link in links %}
+    <a href="{{link}}">Here is a link</a>
+    {% endfor %} {% else %}
+    <h1>This is the example template.</h1>
+    {% endif %}
+  </body>
+</html>
