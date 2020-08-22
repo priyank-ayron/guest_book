@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://sql12360662:8IWChv1IeW@sql12.freemysqlhosting.net/sql12360662'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
 @app.route('/')
@@ -17,6 +20,13 @@ def sign():
 def place(place):
     links = ['https://www.hotstar.com/', 'https://facebook.com/']
     return render_template('example.html', place=place, links=links)
+
+
+@app.route('/process', methods=['POST'])
+def process():
+    name = request.form['name']
+    comment = request.form['comment']
+    return render_template('index.html', name=name, comment=comment)
 
 
 @app.route('/home')
